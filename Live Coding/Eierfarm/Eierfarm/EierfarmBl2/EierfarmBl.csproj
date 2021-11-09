@@ -42,10 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ei.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Gans.cs" />
     <Compile Include="Gefluegel.cs" />
     <Compile Include="Huhn.cs" />
+    <Compile Include="IEileger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Saeugetier.cs" />
+    <Compile Include="Schnabeltier.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

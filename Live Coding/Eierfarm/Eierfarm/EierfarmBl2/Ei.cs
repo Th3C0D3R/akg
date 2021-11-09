@@ -8,7 +8,7 @@ namespace EierfarmBl
 {
     public class Ei
     {
-        public Ei(Gefluegel mutter)
+        public Ei(IEileger mutter)
         {
             this.Mutter = mutter;
             this.Legedatum = DateTime.Now;
@@ -18,7 +18,7 @@ namespace EierfarmBl
             this.Farbe = (EiFarbe)random.Next(Enum.GetNames(typeof(EiFarbe)).Length);
         }
 
-        public Gefluegel Mutter { get;  set; }
+        public IEileger Mutter { get;  set; }
         public DateTime Legedatum { get; }
         public double Gewicht { get; set; }
         public EiFarbe Farbe { get; set; }

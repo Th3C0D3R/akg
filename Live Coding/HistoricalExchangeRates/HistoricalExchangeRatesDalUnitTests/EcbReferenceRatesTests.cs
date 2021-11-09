@@ -11,7 +11,7 @@ namespace HistoricalExchangeRatesDalUnitTests
 
         public EcbReferenceRatesTests()
         {
-            url = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml";
+            url = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.xml";
         }
 
         [TestMethod]
