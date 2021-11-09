@@ -1,0 +1,68 @@
+﻿<Window
+    x:Class="SliderUebung.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SliderUebung"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="413.064"
+    Height="274.572"
+    mc:Ignorable="d">
+    <Canvas>
+        <Slider
+            x:Name="sld"
+            Canvas.Left="44"
+            Canvas.Top="37"
+            Width="300"
+            Maximum="12" />
+        <TextBox
+            Canvas.Left="44"
+            Canvas.Top="61"
+            Width="120"
+            Height="23"
+            Text="{Binding ElementName=sld, Path=Value}" />
+        <TextBox
+            Canvas.Left="44"
+            Canvas.Top="89"
+            Width="120"
+            Height="23"
+            Text="{Binding ElementName=sld, Path=Value, Mode=TwoWay}" />
+        <TextBox
+            Canvas.Left="44"
+            Canvas.Top="117"
+            Width="120"
+            Height="23"
+            Text="{Binding ElementName=sld, Path=Value, Mode=OneWayToSource}" />
+        <TextBox
+            Canvas.Left="44"
+            Canvas.Top="145"
+            Width="120"
+            Height="23"
+            Text="{Binding ElementName=sld, Path=Value, Mode=OneWay}" />
+        <TextBox
+            Canvas.Left="44"
+            Canvas.Top="173"
+            Width="120"
+            Height="23"
+            Text="{Binding ElementName=sld, Path=Value, Mode=OneTime}" />
+        <TextBox
+            Canvas.Left="44"
+            Canvas.Top="201"
+            Width="120"
+            Height="23"
+            Text="{Binding ElementName=sld, Path=Value, Mode=Default}" />
+        <!--<Label
+            Canvas.Left="44"
+            Canvas.Top="73"
+            Content="{Binding ElementName=sld, Path=Value}" />
+        <TextBlock
+            Canvas.Left="44"
+            Canvas.Top="104"
+            Text="{Binding Value, ElementName=sld}"
+            TextWrapping="Wrap" />-->
+
+
+
+    </Canvas>
+</Window>

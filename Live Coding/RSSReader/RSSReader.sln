@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSSReader", "RSSReader\RSSReader.csproj", "{A5F7A1F2-BC6F-4704-B104-FCC684D7418F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5F7A1F2-BC6F-4704-B104-FCC684D7418F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F7A1F2-BC6F-4704-B104-FCC684D7418F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5F7A1F2-BC6F-4704-B104-FCC684D7418F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5F7A1F2-BC6F-4704-B104-FCC684D7418F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57D25095-4254-4753-8FA4-69DF3B7C4E1D}
+	EndGlobalSection
+EndGlobal

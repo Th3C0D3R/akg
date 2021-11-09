@@ -1,0 +1,13 @@
+﻿<Window x:Class="ErsteWpfApp.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ErsteWpfApp"
+        mc:Ignorable="d"
+        Title="Window1" Height="369.61" Width="383.265">
+    <Canvas>
+        <Button Content="Button" Canvas.Left="205" Canvas.Top="64" Width="75"/>
+
+    </Canvas>
+</Window>
