@@ -62,8 +62,21 @@ namespace ChinookUi
                 foreach (Artist artist in qArtists)
                 {
                     TreeViewItem tvi = new TreeViewItem() { Header = artist.Name, Tag = artist.ArtistId };
+                    tvi.Selected += Artist_Selected;
                     tviGenre.Items.Add(tvi);
                 }
+            }
+        }
+
+        private void Artist_Selected(object sender, RoutedEventArgs e)
+        {
+            // Combobox mit den ALben des Artists füllen
+            if (sender is TreeViewItem tviArtist)
+            {
+                int artistId = (int)tviArtist.Tag;
+
+                Artist artist = context.Artists.Find(artistId);
+                cbxAlbums.ItemsSource = artist.Albums;
             }
         }
     }
