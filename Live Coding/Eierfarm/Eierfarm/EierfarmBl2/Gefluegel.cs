@@ -9,8 +9,48 @@ using System.Threading.Tasks;
 
 namespace EierfarmBl
 {
-    public abstract class Gefluegel : INotifyPropertyChanged
+    public abstract class Gefluegel : INotifyPropertyChanged, IEileger, IDataErrorInfo
     {
+        #region IDataErrorInfo
+        public string Error
+        {
+            get
+            {
+                return "";
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = "";
+
+                if (columnName == "Gewicht") // nameof(Gewicht))
+                {
+                    if (this.Gewicht <= 0)
+                    {
+                        result = "Gewicht darf nicht kleiner oder gleich 0 sein.";
+                    }
+                    if (this.Gewicht > 10000)
+                    {
+                        result = "Tier ist zu schwer.";
+                    }
+                }
+                if (columnName == "Name")
+                {
+                    if (string.IsNullOrWhiteSpace(this.Name))
+                    {
+                        result = "Name darf nicht leer sein.";
+                    }
+                }
+
+                return result;
+            }
+        }
+        #endregion
+
+        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged([CallerMemberName] string propName = "")
@@ -20,6 +60,7 @@ namespace EierfarmBl
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
+        #endregion
 
         public Gefluegel(string name)
         {

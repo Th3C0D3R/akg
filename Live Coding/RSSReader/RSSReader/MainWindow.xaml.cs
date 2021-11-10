@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Text;
@@ -32,6 +33,11 @@ namespace RSSReader
 
             // Window.DataContext ist die Basis aller Binding-Ausdrücke
             this.DataContext = feed;
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(e.Uri.AbsoluteUri);
         }
     }
 }

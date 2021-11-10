@@ -44,7 +44,7 @@ namespace EierfarmUi
 
         private void btnEiLegen_Click(object sender, RoutedEventArgs e)
         {
-            if (cbxTiere.SelectedItem is Gefluegel tier)
+            if (cbxTiere.SelectedItem is IEileger tier)
             {
                 tier.EiLegen();
             }

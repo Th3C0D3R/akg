@@ -21,6 +21,7 @@
             <Image
                 Width="100"
                 Height="100"
+                Margin="5"
                 DockPanel.Dock="Left"
                 Source="{Binding ImageUrl}" />
 
@@ -61,15 +62,25 @@
                 x:Name="lstItems"
                 Grid.Row="0"
                 Grid.Column="0"
-                ItemsSource="{Binding Items}" />
+                ItemsSource="{Binding Items}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding PublishDate, StringFormat=dd.MM. HH:mm}" />
+                            <Run Text=": " />
+                            <Run Text="{Binding Title.Text, Mode=OneWay}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
             <GridSplitter
                 Grid.Column="1"
                 Width="5"
-                HorizontalAlignment="Center" />
+                HorizontalAlignment="Stretch" />
 
-            <!--  Meldungsbereich  -->
-            <Grid Grid.Column="2">
+            <!--  Meldungsbereich mit eigenem DataContext  -->
+            <Grid Grid.Column="2" DataContext="{Binding ElementName=lstItems, Path=SelectedItem}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100" />
                     <RowDefinition Height="1*" />
@@ -79,22 +90,30 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
 
-                <Image Source="{Binding ElementName=lstItems, Path=SelectedItem.Links[1].Uri}" />
+                <Image Source="{Binding Links[1].Uri}" />
 
-                <TextBlock
+                <DockPanel
                     Grid.Row="0"
                     Grid.RowSpan="2"
                     Grid.Column="1"
-                    FontSize="14"
-                    FontWeight="Bold"
-                    Text="{Binding ElementName=lstItems, Path=SelectedItem.Title.Text}" />
+                    Margin="5"
+                    LastChildFill="True">
+                    <TextBlock
+                        DockPanel.Dock="Top"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{Binding Title.Text}"
+                        TextWrapping="Wrap" />
 
-                <TextBlock
-                    Grid.Row="0"
-                    Grid.RowSpan="2"
-                    Grid.Column="1"
-                    Text="{Binding ElementName=lstItems, Path=SelectedItem.Summary.Text}"
-                    TextWrapping="Wrap" />
+                    <TextBlock
+                        DockPanel.Dock="Top"
+                        Text="{Binding Summary.Text}"
+                        TextWrapping="Wrap" />
+
+                    <TextBlock DockPanel.Dock="Top">
+                        <Hyperlink NavigateUri="{Binding Links[0].Uri}" RequestNavigate="Hyperlink_RequestNavigate">Mehr...</Hyperlink>
+                    </TextBlock>
+                </DockPanel>
             </Grid>
         </Grid>
     </Grid>
