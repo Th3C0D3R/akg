@@ -8,12 +8,35 @@
     Title="MainWindow"
     Width="800"
     Height="450"
-    mc:Ignorable="d" Loaded="Window_Loaded">
+    Loaded="Window_Loaded"
+    mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
+
+        <DockPanel
+            Grid.Row="0"
+            Margin="3,0"
+            LastChildFill="False">
+            <Button
+                x:Name="btnKundeNeu"
+                Width="23"
+                Height="23"
+                Click="btnKundeNeu_Click"
+                Content="*"
+                DockPanel.Dock="Left" />
+
+            <Button
+                x:Name="btnKundeEdit"
+                Width="23"
+                Height="23"
+                Click="btnKundeEdit_Click"
+                Content="/.."
+                DockPanel.Dock="Left" />
+        </DockPanel>
+
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
@@ -24,6 +47,7 @@
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="3*" MinWidth="75" />
             </Grid.ColumnDefinitions>
+
 
             <TreeView
                 x:Name="trvKunden"
@@ -41,12 +65,35 @@
                 Grid.Row="0"
                 Grid.Column="2"
                 Width="120"
-                Height="23" />
+                Height="23">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ID}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
             <DataGrid
                 x:Name="dgOrderInfo"
                 Grid.Row="1"
-                Grid.Column="2" />
+                Grid.Column="2"
+                AutoGenerateColumns="False"
+                ItemsSource="{Binding ElementName=cbxOrders, Path=SelectedItem.Order_Details}">
+                <DataGrid.Columns>
+                    <!--  Statt DataGridCheckBoxColumn u.ä  -->
+                    <!--<DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                    <DataGridTextColumn Binding="{Binding Quantity}" Header="Quantity" />
+                    <DataGridTextColumn Binding="{Binding Product.ProductName}" Header="Product" />
+                    <DataGridTextColumn Binding="{Binding UnitPrice, StringFormat=#\,##0.00}" Header="Price" />
+                    <DataGridTextColumn Binding="{Binding Discount, StringFormat=p}" Header="Discount" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </Window>

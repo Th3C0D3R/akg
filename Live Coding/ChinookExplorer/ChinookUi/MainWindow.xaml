@@ -1,16 +1,80 @@
-﻿<Window x:Class="ChinookUi.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ChinookUi"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+﻿<Window
+    x:Class="ChinookUi.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:conv="clr-namespace:ChinookUi.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ChinookUi"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    Loaded="Window_Loaded"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <conv:MillisecondConverter x:Key="cvMilliseconds" />
+    </Window.Resources>
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="47*"/>
-            <ColumnDefinition Width="151*"/>
-        </Grid.ColumnDefinitions>
-        <TreeView x:Name="trvArtists" Grid.Column="0" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="379*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+
+            <TreeView x:Name="trvArtists" Grid.Column="0" />
+
+            <GridSplitter
+                Grid.Column="1"
+                Width="5"
+                HorizontalAlignment="Center" />
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <ComboBox
+                    x:Name="cbxAlbums"
+                    Grid.Row="0"
+                    Width="260"
+                    Height="23">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Title}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <DataGrid
+                    Grid.Row="1"
+                    AutoGenerateColumns="False"
+                    ItemsSource="{Binding ElementName=cbxAlbums, Path=SelectedItem.Tracks}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Title" />
+
+                        <!--  Spalte mit Konverter  -->
+                        <DataGridTextColumn Header="Length">
+                            <DataGridTextColumn.Binding>
+                                <Binding
+                                    Converter="{StaticResource cvMilliseconds}"
+                                    ConverterCulture="DE"
+                                    Path="Milliseconds" />
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Binding="{Binding Genre.Name}" Header="Genre" />
+                        <DataGridTextColumn Binding="{Binding UnitPrice}" Header="Price" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
