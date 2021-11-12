@@ -1,0 +1,95 @@
+﻿<Window
+    x:Class="NorthwindUi.AddEditKunde"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:NorthwindUi"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:val="clr-namespace:NorthwindUi.ValidationRules"
+    Title="AddEditKunde"
+    Width="268.789"
+    Height="232.546"
+    mc:Ignorable="d">
+    <Canvas>
+        <Label
+            Canvas.Left="17"
+            Canvas.Top="17"
+            Content="CustomerID" />
+        <Label
+            Canvas.Left="17"
+            Canvas.Top="45"
+            Content="Company" />
+        <Label
+            Canvas.Left="17"
+            Canvas.Top="73"
+            Content="Contact" />
+        <TextBox
+            Canvas.Left="114"
+            Canvas.Top="21"
+            Width="120"
+            Height="23">
+            <TextBox.Text>
+                <Binding
+                    NotifyOnValidationError="True"
+                    Path="CustomerID"
+                    UpdateSourceTrigger="PropertyChanged"
+                    ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+                        <val:StringNotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox
+            Canvas.Left="114"
+            Canvas.Top="49"
+            Width="120"
+            Height="23">
+            <TextBox.Text>
+                <Binding
+                    NotifyOnValidationError="True"
+                    Path="CompanyName"
+                    UpdateSourceTrigger="PropertyChanged"
+                    ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+                        <val:StringNotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox
+            Canvas.Left="114"
+            Canvas.Top="77"
+            Width="120"
+            Height="23"
+            Text="{Binding ContactName}" />
+        <Label
+            Canvas.Left="17"
+            Canvas.Top="102"
+            Content="Land" />
+        <TextBox
+            Canvas.Left="114"
+            Canvas.Top="105"
+            Width="120"
+            Height="23">
+            <TextBox.Text>
+                <Binding
+                    NotifyOnValidationError="True"
+                    Path="Country"
+                    UpdateSourceTrigger="PropertyChanged"
+                    ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+                        <val:StringNotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Button
+            Canvas.Left="159"
+            Canvas.Top="148"
+            Width="75"
+            Click="Button_Click"
+            Content="Speichern" />
+
+    </Canvas>
+</Window>

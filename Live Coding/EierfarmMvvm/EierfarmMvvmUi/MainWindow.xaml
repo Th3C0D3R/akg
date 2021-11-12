@@ -1,0 +1,131 @@
+﻿<Window
+    x:Class="EierfarmMvvmUi.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bl="clr-namespace:EierfarmBl;assembly=EierfarmBl2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EierfarmMvvmUi"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="336.5"
+    Height="370.5"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <Style x:Key="btnYellow" TargetType="Button">
+            <Setter Property="Background" Value="#FFF0" />
+        </Style>
+
+        <Style x:Key="btnDisabled" TargetType="Button">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=txtGewicht, Path=(Validation.HasError)}" Value="true">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding ElementName=txtName, Path=(Validation.HasError)}" Value="true">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate x:Key="tmplEi" DataType="{x:Type bl:Ei}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Gewicht, StringFormat=0.0}" />
+                <TextBlock Text="g, " />
+                <TextBlock Text="{Binding Farbe}" />
+            </StackPanel>
+        </DataTemplate>
+
+    </Window.Resources>
+    <Canvas>
+        <!--#region Controls, die vom ViewModel gesteuert werden-->
+        <ComboBox
+            x:Name="cbxTiere"
+            Canvas.Left="98"
+            Canvas.Top="16"
+            Width="120"
+            DisplayMemberPath="Name"
+            ItemsSource="{Binding Tiere}"
+            SelectedItem="{Binding SelectedTier}" />
+
+        <Button
+            x:Name="btnNeuesHuhn"
+            Canvas.Left="223"
+            Canvas.Top="18"
+            Width="75"
+            Command="{Binding NeuesHuhnCommand}"
+            Content="Huhn" />
+        <Button
+            x:Name="btnNeueGans"
+            Canvas.Left="223"
+            Canvas.Top="43"
+            Width="75"
+            Command="{Binding NeueGansCommand}"
+            Content="Gans" />
+
+        <Button
+            x:Name="btnFuettern"
+            Canvas.Left="223"
+            Canvas.Top="103"
+            Width="75"
+            Command="{Binding TierFuetternCommand}"
+            CommandParameter="{Binding ElementName=cbxTiere, Path=SelectedItem}"
+            Content="Füttern" />
+        <Button
+            x:Name="btnEiLegen"
+            Canvas.Left="223"
+            Canvas.Top="131"
+            Width="75"
+            Command="{Binding TierEiLegenLassenCommand}"
+            Content="Ei legen" />
+        <!--#endregion-->
+
+        <!--#region Textboxen mit Label-->
+        <Label
+            Canvas.Left="20"
+            Canvas.Top="43"
+            Content="Id" />
+        <TextBox
+            Canvas.Left="98"
+            Canvas.Top="47"
+            Width="120"
+            Height="23"
+            IsReadOnly="True"
+            Text="{Binding ElementName=cbxTiere, Path=SelectedItem.Id, Mode=OneWay}" />
+        <Label
+            Canvas.Left="20"
+            Canvas.Top="71"
+            Content="Name" />
+        <TextBox
+            x:Name="txtName"
+            Canvas.Left="98"
+            Canvas.Top="75"
+            Width="120"
+            Height="23"
+            Text="{Binding ElementName=cbxTiere, Path=SelectedItem.Name, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" />
+        <Label
+            Canvas.Left="20"
+            Canvas.Top="99"
+            Content="Gewicht" />
+        <TextBox
+            x:Name="txtGewicht"
+            Canvas.Left="98"
+            Canvas.Top="103"
+            Width="120"
+            Height="23"
+            Text="{Binding ElementName=cbxTiere, Path=SelectedItem.Gewicht, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" />
+        <!--#endregion-->
+
+        <!--#region Listbox für die Eier-->
+        <Label
+            Canvas.Left="24"
+            Canvas.Top="131"
+            Content="Eier" />
+        <ListBox
+            Canvas.Left="98"
+            Canvas.Top="131"
+            Width="120"
+            Height="186"
+            ItemTemplate="{StaticResource ResourceKey=tmplEi}"
+            ItemsSource="{Binding ElementName=cbxTiere, Path=SelectedItem.Eier}" />
+        <!--#endregion-->
+    </Canvas>
+</Window>
