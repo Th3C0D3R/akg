@@ -1,0 +1,16 @@
+﻿<NorthwindDal:Customer xmlns:NorthwindDal="clr-namespace:NorthwindDal;assembly=NorthwindDal" xmlns:Markup="clr-namespace:System.Windows.Markup;assembly=System.Xaml" xmlns:System="clr-namespace:System;assembly=mscorlib" Address="Aenean nunc quisque" CompanyName="Aliquam class vestibulum praesent" ContactTitle="Sed phasellus dis duis est" City="Amet mauris parturient consequat hac" ContactName="Curae cras integer adipiscing" CustomerID="Curabitur nam maecenas" Country="Arcu dictumst aptent" Fax="Leo elementum aliquam mus aliquet" PostalCode="Nullam vestibulum vestibulum accumsan bibendum" Phone="Convallis dignissim" Region="Vivamus ante">
+	<NorthwindDal:Customer.TimeStamp>
+		<Markup:Array Type="{Markup:Type System:Byte}">
+			<System:Byte/>
+			<System:Byte/>
+			<System:Byte/>
+			<System:Byte/>
+			<System:Byte/>
+			<System:Byte/>
+			<System:Byte/>
+			<System:Byte/>
+			<System:Byte/>
+			<System:Byte/>
+		</Markup:Array>
+	</NorthwindDal:Customer.TimeStamp>
+</NorthwindDal:Customer>

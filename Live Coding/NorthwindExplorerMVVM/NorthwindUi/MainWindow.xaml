@@ -42,9 +42,10 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" MinWidth="75" />
+                <ColumnDefinition Width="34*" MinWidth="75" />
+                <ColumnDefinition Width="163*"/>
                 <ColumnDefinition Width="5" />
-                <ColumnDefinition Width="3*" MinWidth="75" />
+                <ColumnDefinition Width="590*" MinWidth="75" />
             </Grid.ColumnDefinitions>
 
 
@@ -53,7 +54,7 @@
                 Grid.RowSpan="2"
                 Grid.Column="0"
                 ItemsSource="{Binding Customers}"
-                SelectedItemChanged="trvKunden_SelectedItemChanged">
+                SelectedItemChanged="trvKunden_SelectedItemChanged" Grid.ColumnSpan="2">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding}">
                         <TextBlock Text="{Binding Key}" />
@@ -68,16 +69,16 @@
 
             <GridSplitter
                 Grid.RowSpan="2"
-                Grid.Column="1"
+                Grid.Column="2"
                 Width="5"
                 HorizontalAlignment="Center" />
 
             <ComboBox
                 x:Name="cbxOrders"
                 Grid.Row="0"
-                Grid.Column="2"
+                Grid.Column="3"
                 Width="120"
-                Height="23">
+                Height="23" Margin="235,4">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding ID}" />
@@ -88,7 +89,7 @@
             <DataGrid
                 x:Name="dgOrderInfo"
                 Grid.Row="1"
-                Grid.Column="2"
+                Grid.Column="3"
                 AutoGenerateColumns="False"
                 ItemsSource="{Binding ElementName=cbxOrders, Path=SelectedItem.Order_Details}">
                 <DataGrid.Columns>
