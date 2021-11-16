@@ -1,0 +1,16 @@
+﻿<Window
+    x:Class="NumericUpDown.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:NumericUpDown"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:nd="clr-namespace:NumericUpDownControl;assembly=NumericUpDownControl"
+    Title="Window1"
+    Width="200"
+    Height="300"
+    mc:Ignorable="d">
+    <Canvas>
+        <nd:NumericUpDown  Width="120" Canvas.Left="20" Canvas.Top="28" />
+    </Canvas>
+</Window>

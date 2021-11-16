@@ -62,12 +62,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MainWindowListCollectionView.xaml.cs">
+      <DependentUpon>MainWindowListCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\OrderInfo.xaml.cs">
+      <DependentUpon>OrderInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\OrderInfoViewModel.cs" />
+    <Compile Include="ViewModel\NorthwindViewModelListCollectionView.cs" />
     <Compile Include="ViewModel\NorthwindViewModel.cs" />
     <Compile Include="ValidationRules\StringValidationRules.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Page Include="AddEditKunde.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindowListCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +96,13 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <DesignData Include="SampleData\CustomerSampleData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </DesignData>
+    <Page Include="UserControls\OrderInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

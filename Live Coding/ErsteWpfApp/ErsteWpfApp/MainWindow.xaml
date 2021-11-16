@@ -8,6 +8,8 @@
     Title="MainWindow"
     Width="447.023"
     Height="363.142"
+    Button.Click="Window_Click"
+    MouseMove="Grid_MouseMove"
     mc:Ignorable="d">
     <Grid>
         <!--  Hauptgrid  -->
@@ -26,13 +28,17 @@
             Grid.Column="0"
             Content="Ich bin ein Label" />
 
-        <Button x:Name="btnGross" Grid.Row="1" Grid.Column="0" />
+        <Button
+            x:Name="btnGross"
+            Grid.Row="1"
+            Grid.Column="0" />
 
         <!--  Rechte Fensterhälfte  -->
         <Grid
             x:Name="grdRechteHaelfte"
             Grid.Row="1"
-            Grid.Column="1">
+            Grid.Column="1"
+            Button.Click="grdRechteHaelfte_Click">
             <Grid.RowDefinitions>
                 <RowDefinition Height="49*" />
                 <RowDefinition Height="253*" />
@@ -52,6 +58,13 @@
                 VerticalAlignment="Top"
                 Click="btnKnopf_Click"
                 Content="Button" />
+
+            <Button
+                Grid.Row="0"
+                Width="75"
+                Height="25"
+                Content="Klick" />
+
         </Grid>
         <TextBox
             x:Name="txtBox"
